@@ -1,0 +1,22 @@
+{% extends 'authbase.html'%}
+{% load widget_tweaks %}
+{% load static %}
+{% load bootstrap_icons %}
+
+{% block title%}
+    home | coinControl
+{% endblock %}
+
+{% block static%}
+<!-- js -->
+<script
+ src='{% static "/home/js/main.js" %}' language="JavaScript" type="text/javascript">
+</script>
+<!-- CSS -->
+<link href='{% static "/home/css/styles.css" %}' rel='stylesheet'>
+
+{%endblock%}
+
+{% block content %}
+    home aqui
+{% endblock%}

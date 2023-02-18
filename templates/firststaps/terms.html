@@ -1,0 +1,81 @@
+{% extends 'authbase.html'%}
+{% load widget_tweaks %}
+{% load static %}
+{% load bootstrap_icons %}
+
+{% block title%}
+    terms | coinControl
+{% endblock %}
+
+{% block static%}
+<!-- js -->
+<script
+ src='{% static "/firststaps/js/main.js" %}' language="JavaScript" type="text/javascript">
+</script>
+<!-- CSS -->
+<link href='{% static "/firststaps/css/styles.css" %}' rel='stylesheet'>
+
+{%endblock%}
+{% block content %}
+<div class="card fadeIn first" style="margin-top: 5rem;margin-bottom: 10rem;">
+    <div class="card-body">
+      <h5 class="card-title" style=" display: flex;align-items: center;justify-content: center;height: 100%;font-weight: bold;">Termos de uso e política de compartilhamento de dados</h5>
+      <div style="border-bottom: 2px solid #eb7600;"></div>
+      
+      <p class="card-text" style="margin-top: 1rem;">
+        
+        <p>
+          <div class="subtitulo">Coin Control</div>
+          O CoinControl respeita a privacidade dos seus usuários e se esforça para proteger seus dados pessoais. <br>
+          Esta política de compartilhamento de dados descreve como e quando compartilhamos informações com terceiros.<br>
+        </p>
+        
+        <p>
+          <div class="subtitulo">Coleta e Uso de Dados</div>
+          Ao criar uma conta no CoinControl, coletamos informações pessoais básicas, como nome, sobrenome, endereço de e-mail e senha. <br>
+          Essas informações são usadas exclusivamente para fornecer o serviço do CoinControl aos nossos usuários e nunca são compartilhadas com terceiros <br>
+           a menos que seja necessário para cumprir uma solicitação do usuário ou exigência legal. <br>
+        </p>
+  
+        <p>
+          <div class="subtitulo">Compartilhamento de Dados</div>
+          O CoinControl não compartilha informações pessoais dos usuários com terceiros, a menos que sejam necessárias para cumprir uma solicitação do usuário ou exigência legal. <br>
+          Podemos compartilhar informações não pessoais, como estatísticas de uso agregadas, com terceiros para fins de análise e melhorias do serviço. <br>
+        </p>
+  
+        <p>
+          <div class="subtitulo">Segurança de Dados</div>
+          O CoinControl toma medidas razoáveis para proteger os dados pessoais dos usuários contra acesso não autorizado, uso indevido ou divulgação.  <br>
+          Usamos tecnologias padrão da indústria, como criptografia e autenticação de dois fatores, para proteger as informações pessoais dos usuários. <br>
+        </p>
+        
+        <p>
+          <div class="subtitulo">Alterações na Política de Compartilhamento de Dados</div>
+          O CoinControl pode atualizar esta política de compartilhamento de dados periodicamente para refletir mudanças na forma como coletamos, usamos ou compartilhamos informações pessoais. <br>
+          Ao continuar a usar o serviço após a publicação de qualquer atualização, o usuário concorda com os termos revisados. br
+        </p>    
+
+            
+      </p>
+      <div style="border-bottom: 2px solid #eb7600;margin-top: 1rem;margin-bottom: 1rem; "></div>
+      <div class="center">
+        <form action="{% url 'terms'%}" method="POST" >
+          {% csrf_token %}
+          {% include "_alertas.html" %}
+          <div style="margin-left: 1px;" class="form-check">
+            {%render_field   form.accepted  type="checkbox" class="form-check-input" placeholder="aceite"%}
+            <!-- <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> -->
+            <label class="form-check-label" for="defaultCheck1">
+              Aceito os termos e condições
+            </label>
+          </div>
+          <div style="margin-top: 1rem;">
+            <button id="fadeInfourth" Class="form-btn" type="submit">PRÓXIO</button>
+          </div>
+        </form>
+      </div>
+  
+    </div>
+
+
+{% endblock%}

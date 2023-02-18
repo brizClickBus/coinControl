@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+{% load widget_tweaks %}
+{% load static %}
+{% load bootstrap_icons %}
+
+{% block title%}
+    sign_in | coinControl
+{% endblock %}
+
+{% block static%}
+
+<script
+ src='{% static "/users/js/main.js" %}' language="JavaScript" type="text/javascript">
+</script>
+<!-- CSS -->
+<link href='{% static "/users/css/styles.css" %}' rel='stylesheet'>
+
+{%endblock%}
+
+{% block content %}
+
+<a class="navbar-brand" href="{% url 'sign_in'%}">
+    <img src="{% static 'img/logo/logo.png' %}" alt="">
+</a>
+
+<div id="card_body" class="card text-center fadeIn first row 1" style="width: 40%; padding: 20px 10px; border-radius: 10px;position: static">
+    <div class="card-body" >
+        {% include "_alertas.html" %}
+
+        <form action="{% url 'sign_in'%}" method="POST" >
+            
+            <div class="fadeIn third"  style="padding: 20px;">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">{% bs_icon 'person'  size='1.5em' %}</span>
+                    </div>
+                    {%render_field   form.username  type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"%}
+                </div>
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">{% bs_icon 'unlock-fill'  size='1.5em' %}</span>
+                    </div>
+                    {%render_field   form.password  type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"%}
+                  </div>
+            </div >
+            
+            <div>
+                <button id="fadeInfourth" Class="form-btn" type="submit">ACESSAR</button>
+            </div>
+            
+            <a  class="sign_up" href="{% url 'sign_up'%}">CADASTRAR-SE</a>
+            
+        </div>
+        
+    </form>
+</div>
+</div>
+
+{% endblock%}
+
+{%block leg%}
+    DESCOMPLICANDO SUA VIDA FINANCEIRA
+{%endblock%}

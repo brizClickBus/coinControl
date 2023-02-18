@@ -1,0 +1,99 @@
+
+{% extends 'base.html'%}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block static%}
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script
+ src='{% static "/users/js/main.js" %}' language="JavaScript" type="text/javascript">
+</script>
+<!-- CSS -->
+<link href='{% static "/users/css/styles.css" %}' rel='stylesheet'>
+{% endblock %}
+
+{% block title%}
+    sign_up | coinControl
+{% endblock %}
+
+{% block content %}
+
+<a class="navbar-brand" href="{% url 'sign_in'%}">
+    <img src="{% static 'img/logo/logo.png' %}" alt="">
+</a>
+
+<div id="card_body" class="card text-center fadeIn first row 1" style="width: 40%; padding: 20px 10px; border-radius: 10px;">
+    <div class="card-body" >
+            <div style="color:#f6c116;font-weight: bold;">CADASTRO</div>
+            <form action="{% url 'sign_up'%}" method="POST" >
+                
+                <div style="padding: 20px;">
+                
+                    {% csrf_token %}
+                    
+                    <div style="margin-bottom: 1rem;">
+
+                        {%render_field   form.first_name  name="first_name" type="text" class="form-control" id="nome" aria-describedby="nome" placeholder="PRIMEIRO NOME" onclick="clickOffPss()"%}
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        {%render_field   form.last_name  name="last" type="text" class="form-control" id="sobrenome" aria-describedby="sobrenome" placeholder="SOBRENOME" onclick="clickOffPss()"%}
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        {%render_field   form.username  name="username" type="text" class="form-control" id="username" aria-describedby="username" placeholder="username" onclick="clickOffPss()"%}
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        {%render_field   form.email  name="email" type="email" class="form-control" id="email" aria-describedby="email" placeholder="E-MAIL" onclick="clickOffPss()"%}
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        {%render_field   form.password1 placeholder="senha" id="password1" name="password1"   class="form-control" onclick="clickPss()" onkeyup="strongPassword()"%}
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        {%render_field   form.password2  name="password2" class="form-control" id="password2" aria-describedby="password2" placeholder="REPETIR SENHA" onclick="clickOffPss()"%}
+                    </div>
+                </div >
+                <!-- mostrar nivel de forca da senha -->
+                <div id="about_password" class="card bt1int" style="margin-bottom: 1rem; display:none;">
+                    <div class="card-header text-center card_ps" style="background-color:#f6c116 ;">
+                        SOBRE A SENHA
+                    </div>
+                    <div class="card-body"style="background-color: #f9f9f9 ;">
+
+                        <div class="password0" id="letraMaiu">Possuir uma ou mais letras maiúsculas...</div>
+                        
+                        <div class="password0" id="caractere">Possuir um ou mais caractere especial...</div>
+                        
+                        <div class="password0" id="numero">Possuir um ou mais números...</div>
+                        
+                        <div class="password0" id="letra">Possuir uma ou mais letras...</div>
+
+                        <div class="password0" id="maior8">Maior que 8 caracteres...</div>
+
+                    </div>
+                    
+                    <div class="card-footer text-muted" id="progressBar" style="background-color:#f6c116 ;"></div>
+                
+                </div>
+                {% include "_alertas.html" %}
+                <div>
+                    <button id="nextbutton" Class="form-btn fadeIn fourth" type="submit">PRÓXIMO</button>
+                </div>
+
+                <a  class="sign_up" href="{% url 'sign_in'%}">VOLTAR</a>
+            </form>
+        </div>
+    </div>
+{% endblock%}
+
+{%block leg%}
+    <div style="margin-bottom: 10rem;">
+
+        FALTA POUCO PRA SUA VIDA FINANCEIRA FICAR MELHOR!
+    </div>
+{%endblock%}

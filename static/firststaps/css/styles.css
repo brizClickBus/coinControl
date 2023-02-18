@@ -1,0 +1,32 @@
+.body{
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    align-items: center; 
+    justify-content: center; 
+    background-image: linear-gradient(#f6c116, #694f78 80%);
+}
+.form-btn{
+    display: inline-block;
+    width: 150px;
+    background: #f6c116;
+    border-color: transparent;
+    color: #694f78;
+    margin-bottom: 0px;
+    font-weight: bold;
+    text-align: center;
+    touch-action: manipulation;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    height: 40px;
+    position: relative;
+}
+.form-btn:hover{
+    width: 152px;
+    box-shadow: 0 0 10px #f6c116;
+}
+
+.subtitulo{
+    font-weight: bold;
+}
