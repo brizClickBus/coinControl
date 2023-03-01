@@ -24,11 +24,19 @@ class Bank(models.Model):
         verbose_name = "Bacnk" # Define o nome que será exibido no admin
         verbose_name_plural = "Banks" # Define o nome no plural
 
+class CardBrand(models.Model):
+    name = models.CharField(max_length=225)
+    urlImage = models.URLField()
+    class Meta:
+        verbose_name = "CardBrand" # Define o nome que será exibido no admin
+        verbose_name_plural = "CardBrands" # Define o nome no plural        
+
 
 class Cards(models.Model):
     creditoChoices = (('SIM','Sim'),('NAO','Não'),('OS DOIS','Os dois'))
    
     banks = models.ForeignKey(Bank, on_delete=models.CASCADE)
+    cardBrand = models.ForeignKey(CardBrand, on_delete=models.CASCADE)
     titularname = models.CharField(max_length=225)
     type = models.CharField(max_length=20,choices=creditoChoices)
     lastNumber = models.IntegerField()

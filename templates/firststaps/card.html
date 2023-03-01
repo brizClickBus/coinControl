@@ -1,0 +1,110 @@
+{% extends 'authbase.html'%}
+{% load widget_tweaks %}
+{% load static %}
+{% load bootstrap_icons %}
+
+{% block title%}
+registering banks | coinControl
+{% endblock %}
+
+{% block static%}
+<!-- js -->
+<script
+ src='{% static "/firststaps/js/main.js" %}' language="JavaScript" type="text/javascript">
+</script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jQuery UI -->
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/smoothness/jquery-ui.css" />
+
+
+<!-- CSS -->
+<link href='{% static "/firststaps/css/styles.css" %}' rel='stylesheet'>
+
+
+{%endblock%}
+{% block content %}
+
+<div class="image-container">
+    <img src="{% static 'img/logo/logo.png' %}" alt="">
+</div>
+  
+
+<div class="card fadeIn first">
+    <div class="card-body">
+      <h5 class="card-title" style=" display: flex;align-items: center;justify-content: center;height: 100%;font-weight: bold;">
+      Vamos cadastrar seus cartões
+      </h5>
+      <div  style="margin-bottom: 1rem;" class="divText"></div>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Cadastre todos os seus cartões ou apenas alguns<br>
+        É necessario cadastrar pelo menos um banco para conseguir proseguir
+      </h6> 
+     
+      <div class="center">
+        <form action="{% url 'bank' %}" method="POST" >
+         
+          {% csrf_token %}
+         
+          {% include "_alertas.html" %}
+          {%if bancoforms%}
+  
+            <div>
+                <label for="nomebanco">Nome do banco</label>
+                {%render_field   bancoforms.bankname id="bancosCadastrados-autocomplete"  type="text" class="form-control" placeholder="Banco do Brasil"%}
+                <label for="descricao">Descrição</label>
+                {%render_field   bancoforms.description id="descricao"   type="text" class="form-control" placeholder="Banco onde recebo meu sálario"%}
+            </div>
+  
+          {%endif%}
+          <div class="row">
+            <div class="col"  style="margin-top: 1rem;">
+              <input  name="save_banco_and_add_another" style="width: 15rem;" id="saveAdd" Class="form-btn container" type="submit" value="Salvar e cadastrar outro">
+            </div>
+  
+          </div>
+        
+        </form>
+        {%if bancosSalvos%}
+          <div style="border-bottom: 2px solid #b0afad; margin-bottom: 1rem;margin-top: 2rem;"></div>
+          <h5 class="card-title" style=" display: flex;align-items: center;justify-content: center;height: 100%;font-weight: bold;">
+            Bancos cadastrados
+          </h5>
+          <div class="divText"></div>
+          <div id="mudarTamanho" class="table-responsive-xl overflow-auto border rounded">
+            <table class="table table-striped">
+              <thead >
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in bancosSalvos %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{ item.bankname }}</td>
+                  <td>{{ item.description }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+            <div id="tamanhoTh">
+              {{height}}
+            </div>
+            <div class="col"  style="margin-top: 1rem;">
+              <a href="{% url 'card' %}"  Class="form-btn next container" >PRÓXIMO</a>
+            </div>
+        {%endif%}
+        
+      </div>
+      
+    </div>
+  </div>
+  <script src='{% static "firststaps/js/bank.js" %}' language="JavaScript" type="text/javascript"  ></script>
+
+{% endblock%}

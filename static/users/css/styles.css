@@ -1,23 +1,31 @@
 .body{
     display: flex; 
     flex-direction: column; 
-    /* min-height: 100vh;  */
+    min-height: 100vh; 
     align-items: center; 
     justify-content: center; 
-    background-color: #f0efef;
-}
-img {
-    width: 700px;
-    height: 400px;
+    /* background-color: #f0efef; */
+    /* background-image: linear-gradient(#fba4f0, #7e74fc 70%); */
+    background-color: #48142c;
 }
 
+.image-container {
+  max-width: 600px; /* Define a largura máxima do contêiner da imagem */
+  margin: 0 auto; /* Centraliza o contêiner da imagem */
+}
+
+img {
+  max-width: 100%; /* Torna a imagem responsiva */
+  height: auto;
+  display: block; /* Remove espaços em branco abaixo da imagem */
+}
 
 .form-btn{
     display: inline-block;
     width: 150px;
-    background: #f6c116;
+    background: #f8bb4f;
     border-color: transparent;
-    color: #694f78;
+    color: #48142c;
     margin-bottom: 0px;
     font-weight: bold;
     text-align: center;
@@ -29,23 +37,26 @@ img {
     position: relative;
 }
 .form-btn:hover{
-    width: 152px;
-    box-shadow: 0 0 10px #f6c116;
+  background: #48142c;
+  color: #f8bb4f;
+  box-shadow: 0 0 3px black;
 }
 
 .sign_up{
   font-size: 12px; 
   text-decoration: none;
-  color:#f6c116;
+  color:#48142c;
   margin-bottom:1rem;
 }
 .sign_up:hover{
-  color:#f6c116;
+  color:#48142c;
   font-weight: bold;
 }
 
 .card{
-    background-color: #694f78;
+    background-color: #fff;
+    box-shadow: 0 0 10px black;
+    /* background-image: linear-gradient(#f04b8f, #f8bb4f); */
 }
 
 /* find in */
@@ -138,7 +149,7 @@ img {
   }
   .password0:hover{
     font-size:1.1rem;
-    color: #404460;
+    color: #48142c;
   }
   .password1{
     color: #208754;

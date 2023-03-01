@@ -4,14 +4,14 @@
     min-height: 100vh; 
     align-items: center; 
     justify-content: center; 
-    background-image: linear-gradient(#f6c116, #694f78 80%);
+    background-color: #48142c;
 }
 .form-btn{
     display: inline-block;
     width: 150px;
-    background: #f6c116;
+    background: #f8bb4f;
     border-color: transparent;
-    color: #694f78;
+    color: #48142c;
     margin-bottom: 0px;
     font-weight: bold;
     text-align: center;
@@ -22,11 +22,127 @@
     height: 40px;
     position: relative;
 }
-.form-btn:hover{
-    width: 152px;
-    box-shadow: 0 0 10px #f6c116;
+
+.form-btn.next{
+    padding: 8px 16px;
+    text-decoration: none;
 }
+.form-btn.container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* para centralizar horizontalmente também */
+  }
+
+
+.form-btn:hover{
+    background: #48142c;
+    color: #f8bb4f;
+    box-shadow: 0 0 3px black;
+  }
 
 .subtitulo{
     font-weight: bold;
 }
+
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.ui-autocomplete li {
+    padding: 5px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.divText{
+    border-bottom: 2px solid  #f8bb4f;
+}
+
+.image-container {
+    max-width: 600px; /* Define a largura máxima do contêiner da imagem */
+    margin: 0 auto; /* Centraliza o contêiner da imagem */
+  }
+  
+  img {
+    max-width: 100%; /* Torna a imagem responsiva */
+    height: auto;
+    display: block; /* Remove espaços em branco abaixo da imagem */
+  }
+
+
+
+/* find in */
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @-moz-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  
+  }
+  .fadeIn {
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: 0.5s;
+    -moz-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+  }
+  
+  .fadeIn.first {
+    -webkit-animation-delay: 0.2s;
+    -moz-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+  }
+  
+  .fadeIn.second {
+    -webkit-animation-delay: 0.3s;
+    -moz-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+  }
+  
+  .fadeIn.third {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+  
+  .fadeIn.fourth {
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+  }
+  
+  .fadeIn.fifth {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+  }
+  

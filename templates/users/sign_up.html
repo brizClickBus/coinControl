@@ -21,13 +21,13 @@
 
 {% block content %}
 
-<a class="navbar-brand" href="{% url 'sign_in'%}">
+<div class="image-container">
     <img src="{% static 'img/logo/logo.png' %}" alt="">
-</a>
+</div>
 
 <div id="card_body" class="card text-center fadeIn first row 1" style="width: 40%; padding: 20px 10px; border-radius: 10px;">
     <div class="card-body" >
-            <div style="color:#f6c116;font-weight: bold;">CADASTRO</div>
+            <div style="color:#48142c;font-weight: bold;">CADASTRO</div>
             <form action="{% url 'sign_up'%}" method="POST" >
                 
                 <div style="padding: 20px;">
@@ -44,7 +44,7 @@
                     </div>
                     
                     <div style="margin-bottom: 1rem;">
-                        {%render_field   form.username  name="username" type="text" class="form-control" id="username" aria-describedby="username" placeholder="username" onclick="clickOffPss()"%}
+                        {%render_field   form.username  name="username" type="text" class="form-control" id="username" aria-describedby="username" placeholder="USERNAME" onclick="clickOffPss()"%}
                     </div>
                     
                     <div style="margin-bottom: 1rem;">
@@ -52,15 +52,15 @@
                     </div>
 
                     <div style="margin-bottom: 1rem;">
-                        {%render_field   form.password1 placeholder="senha" id="password1" name="password1"   class="form-control" onclick="clickPss()" onkeyup="strongPassword()"%}
+                        {%render_field   form.password1 placeholder="SENHA" id="password1" name="password1"   class="form-control" onclick="clickPss()" onkeyup="strongPassword()"%}
                     </div>
                     <div style="margin-bottom: 1rem;">
                         {%render_field   form.password2  name="password2" class="form-control" id="password2" aria-describedby="password2" placeholder="REPETIR SENHA" onclick="clickOffPss()"%}
                     </div>
                 </div >
                 <!-- mostrar nivel de forca da senha -->
-                <div id="about_password" class="card bt1int" style="margin-bottom: 1rem; display:none;">
-                    <div class="card-header text-center card_ps" style="background-color:#f6c116 ;">
+                <div id="about_password" class="bt1int" style="margin-bottom: 1rem; display:none;">
+                    <div class="card-header text-center card_ps" style="background-color:#48142c ;">
                         SOBRE A SENHA
                     </div>
                     <div class="card-body"style="background-color: #f9f9f9 ;">
@@ -77,7 +77,7 @@
 
                     </div>
                     
-                    <div class="card-footer text-muted" id="progressBar" style="background-color:#f6c116 ;"></div>
+                    <div class="card-footer text-muted" id="progressBar" style="background-color:#48142c ;"></div>
                 
                 </div>
                 {% include "_alertas.html" %}
@@ -92,8 +92,7 @@
 {% endblock%}
 
 {%block leg%}
-    <div style="margin-bottom: 10rem;">
-
+    <div style="margin-bottom: 10rem; color: #f8bb4f;">
         FALTA POUCO PRA SUA VIDA FINANCEIRA FICAR MELHOR!
     </div>
 {%endblock%}

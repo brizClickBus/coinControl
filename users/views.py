@@ -1,28 +1,40 @@
-from django.shortcuts import render
-from django.contrib import auth, messages
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from .forms import UserLoginForm,UserRegistrationForm
 import re
+
+from django.contrib import auth, messages
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.shortcuts import redirect, render
+from home.models import Terms
+from .forms import UserLoginForm, UserRegistrationForm
+
 
 # Create your views here.
 def sign_in(request):
+    form = UserLoginForm()
     if request.method == 'POST':
-        form = UserLoginForm(data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
+    
+        username = request.POST['username']
+        password = request.POST['password']
+
+        if username =="" or password == "":
+            messages.error(request, 'Os campos email e senha não podem ficar em branco')
+            return render(request,'users/sign_in.html',{'form': form})
+        
+        user = User.objects.filter(username=username)
+        if user.exists():
+            user = auth.authenticate(request, username=username, password=password)
             if user is not None:
-                login(request, user)
-                return redirect('home')  # redireciona para a página de dashboard do usuário
-            else:
-                form.add_error(None, 'Usuário ou senha incorretos.')
-    else:
-        form = UserLoginForm()
-        messages.success(request,"Seja Bem-vindo!")
-        return render(request, 'users/sign_in.html', {'form': form})
+                auth.login(request, user)
+                userid = user.id
+                if Terms.objects.filter(user_id=userid).exists():
+                    return redirect('home')
+                else:
+                    return redirect('terms')
+        else:
+            messages.error(request,'Usuário não cadastrado')
+            return render(request,'users/sign_in.html',{'form': form})
+    return render(request,'users/sign_in.html',{'form': form})
+
 
 def sign_up(request):
     signUpForms = UserRegistrationForm()
